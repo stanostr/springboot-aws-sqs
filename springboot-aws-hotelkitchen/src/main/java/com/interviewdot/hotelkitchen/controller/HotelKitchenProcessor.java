@@ -14,12 +14,6 @@ public class HotelKitchenProcessor {
 
 	private static final Logger LOG = LoggerFactory.getLogger(HotelKitchenProcessor.class);
 
-	@Autowired
-	private QueueMessagingTemplate queueMessagingTemplate;
-
-	@Value("${cloud.aws.end-point.uri}")
-	private String sqsEndPoint;
-
 	@SqsListener("springboot-sqs")
 	public void getMessage(String message) {
 		LOG.info("Message from SQS Queue - **************************\n"+
